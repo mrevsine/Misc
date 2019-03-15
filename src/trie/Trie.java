@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Trie {
@@ -21,14 +22,8 @@ public class Trie {
 	
 	public void includeFrequencies() {
 		
-		File file = new File("/Users/MahlerRevsine/Documents/Word_Frequencies.txt");
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream(file);
-		} catch (IOException e) {
-			throw new RuntimeException("Unable to read file");
-		}
-		InputStreamReader isr = new InputStreamReader(fis);
+		InputStream in = getClass().getClassLoader().getResourceAsStream("Word_Frequencies.txt");
+		InputStreamReader isr = new InputStreamReader(in);
 		BufferedReader br = new BufferedReader(isr);
 		
 		String line;
@@ -56,14 +51,8 @@ public class Trie {
 	
 	public void buildBig() {
 		
-		File file = new File("/Users/MahlerRevsine/Documents/Big_English_Dictionary.txt");
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream(file);
-		} catch (IOException e) {
-			throw new RuntimeException("Unable to read file");
-		}
-		InputStreamReader isr = new InputStreamReader(fis);
+		InputStream in = getClass().getClassLoader().getResourceAsStream("Big_English_Dictionary.txt");
+		InputStreamReader isr = new InputStreamReader(in);
 		BufferedReader br = new BufferedReader(isr);
 		
 		String line;
@@ -86,14 +75,8 @@ public class Trie {
 	
 	public void buildSmall() {
 		
-		File file = new File("/Users/MahlerRevsine/Documents/English_Dictionary.txt");
-		FileInputStream fis;
-		try {
-			fis = new FileInputStream(file);
-		} catch (IOException e) {
-			throw new RuntimeException("Unable to read file");
-		}
-		InputStreamReader isr = new InputStreamReader(fis);
+		InputStream in = getClass().getClassLoader().getResourceAsStream("English_Dictionary.txt");
+		InputStreamReader isr = new InputStreamReader(in);
 		BufferedReader br = new BufferedReader(isr);
 		
 		String line;
@@ -115,31 +98,6 @@ public class Trie {
 	}
 	
 	public void readInTextFile(String fileName) {
-		
-//		try {
-//			BufferedReader br = new BufferedReader(new FileReader(file));
-//		    StringBuilder sb = new StringBuilder();
-//		    String line = br.readLine();
-//		    String[] temp = line.split(" ");
-//	        for (String s : temp) {
-//	        		if (!contains(s)) addWord(s);
-//	        }
-//
-//		    while (line != null) {
-//		        sb.append(line);
-//		        sb.append(System.lineSeparator());
-//		        line = br.readLine();
-//		        String[] words = line.split(" ");
-//		        for (String s : words) {
-//		        		if (!contains(s)) addWord(s);
-//		        }
-//		    }
-//		    br.close();
-////		    String everything = sb.toString();
-////		    System.out.print(everything);
-//		} catch (IOException e) {
-//			System.out.println("Unable to process file");
-//		} 
 		
 		File file = new File(fileName);
 		FileInputStream fis;

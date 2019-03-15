@@ -54,6 +54,29 @@ public class Display extends JPanel {
 		
 	}
 	
+
+	public void updateLabel() {
+		
+		Thread t = new Thread(new Runnable() {
+			
+			public void run() {
+				
+				if (textField.getText().equals("")) label.setText("");
+				else label.setText(trie.getContinuation(textField.getText()));
+				
+			}
+			
+		});
+		
+		t.start();
+		
+	}
+	
+	/**
+	 * Works for single words
+	 * Suggests most likely continuation for the given word
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		
 		JFrame frame = new JFrame();
@@ -75,21 +98,5 @@ public class Display extends JPanel {
 		
 	}
 	
-	public void updateLabel() {
-		
-		Thread t = new Thread(new Runnable() {
-			
-			public void run() {
-				
-				if (textField.getText().equals("")) label.setText("");
-				else label.setText(trie.getContinuation(textField.getText()));
-				
-			}
-			
-		});
-		
-		t.start();
-		
-	}
 
 }
